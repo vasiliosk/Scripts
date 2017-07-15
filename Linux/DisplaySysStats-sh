@@ -1,0 +1,25 @@
+#!/bin/bash
+btime=`who -b`
+utime=`uptime`
+utime=${utime/${utime: -35}/''}
+utime=${utime/#*up/''}
+vtime=${utime/#*,*,/''}
+utime=${utime/,${vtime}/''}
+
+printf "\n\n ==========  SYSTEM USAGE  ==========\n\n"
+echo -n  "  System information as of "
+/bin/date
+echo
+/usr/bin/landscape-sysinfo
+echo
+echo "BOOT TIME: " ${btime/'system boot'/''}
+echo "UPTIME:    " ${utime}
+echo
+df -h | egrep '(Filesystem)|(/dev/sd)'
+printf "\n\n ========== ACTIVE USERS ===========\n"
+echo
+who --ips
+printf "\n\n ========== CURRENT WEATHER  ==========\n"
+echo
+weather KLAX
+echo

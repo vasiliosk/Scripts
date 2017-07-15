@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+
+echo "Here is a test for sudo script using : sudo -s -c ' who -b' "
+sudo sh -c "who -b"
+
+
+exit
